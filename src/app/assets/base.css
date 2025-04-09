@@ -1,5 +1,7 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  --color-main-light: #ffffff;
+  --color-main-dark: #121212;
+
+  --color-primary-light: #dedede;
+  --color-primary-black: #121212;
 }
