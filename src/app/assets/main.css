@@ -6,9 +6,17 @@
   box-sizing: border-box;
 }
 
+body.light {
+  background-color: var(--color-main-light);
+  color: var(--color-primary-dark);
+}
+
 body {
   background-color: var(--color-main-dark);
   color: var(--color-primary-light);
+  transition:
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
 }
 
 ul,
