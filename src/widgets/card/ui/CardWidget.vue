@@ -55,7 +55,7 @@ const { isMobile } = useBreakpoint();
     padding-left: 20px;
     position: absolute;
     left: 0;
-    bottom: 4.4px;
+    bottom: 4.2px;
   }
 
   &-title.dark {
@@ -78,7 +78,6 @@ const { isMobile } = useBreakpoint();
 
   &-title.light {
     background-color: var(--color-main-light);
-    bottom: 4.4px;
 
     &::before {
       content: '';

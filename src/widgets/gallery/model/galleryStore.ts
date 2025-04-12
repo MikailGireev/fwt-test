@@ -18,7 +18,7 @@ export const useGalleryStore = defineStore('gallery', () => {
     );
 
     card.value = res.data.items;
-    totalPage.value = Math.ceil(res.data.total / limit);
+    totalPage.value = Math.ceil(res.data.meta.total_items / limit);
 
     if (res.data.items.length === 0) {
       isEmpty.value = true;
@@ -29,5 +29,10 @@ export const useGalleryStore = defineStore('gallery', () => {
     return res.data.items;
   };
 
-  return { card, fetchCard, inputValue, isEmpty };
+  const setPage = (newPage: number) => {
+    page.value = newPage;
+    fetchCard();
+  };
+
+  return { card, fetchCard, inputValue, isEmpty, page, limit, totalPage, setPage };
 });

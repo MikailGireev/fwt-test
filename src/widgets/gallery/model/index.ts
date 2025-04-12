@@ -7,5 +7,11 @@ export interface Card {
 
 export interface GalleryResponse {
   items: Card[];
-  total: number;
+  meta: {
+    total_items: number;
+    total_pages: number;
+    current_page: number;
+    per_page: number;
+    remaining_count: number;
+  };
 }
