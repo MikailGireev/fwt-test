@@ -6,12 +6,18 @@ interface Props {
 }
 
 defineProps<Props>();
+const emits = defineEmits(['update:modelValue']);
 </script>
 
 <template>
   <div class="input-container">
     <slot name="icon"></slot>
-    <input :class="`input ${theme}`" :type="type" :placeholder="placeholder" />
+    <input
+      @input="emits('update:modelValue', ($event.target as HTMLInputElement).value)"
+      :class="`input ${theme}`"
+      :type="type"
+      :placeholder="placeholder"
+    />
   </div>
 </template>
 
@@ -27,20 +33,35 @@ defineProps<Props>();
     font-size: 14px;
     width: 100%;
     padding: 8px 0px 8px 30px;
-    border: none;
+    border: 1px solid var(--color-primary-light);
     border-radius: 4px;
+    color: var(--color-primary-gray);
+    outline: none;
 
     &.light {
       background-color: #1a1818;
+      border: none;
+      color: var(--color-primary-light);
     }
   }
 
   :deep(.icon) {
     position: absolute;
     top: 50%;
-    left: 22px;
+    left: 8px;
     transform: translateY(-50%);
     z-index: 1;
+  }
+}
+
+@media screen and (max-width: 1239px) {
+  .input {
+    max-width: 296px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .input {
+    max-width: 280px;
   }
 }
 </style>

@@ -4,3 +4,8 @@ export interface Card {
   year: string;
   img: string;
 }
+
+export interface GalleryResponse {
+  items: Card[];
+  total: number;
+}
