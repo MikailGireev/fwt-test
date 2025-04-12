@@ -55,7 +55,7 @@ const { isMobile } = useBreakpoint();
     padding-left: 20px;
     position: absolute;
     left: 0;
-    bottom: 4.2px;
+    bottom: 4px;
   }
 
   &-title.dark {

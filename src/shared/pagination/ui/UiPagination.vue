@@ -52,6 +52,7 @@ const visiblePages = computed(() => {
 .pagination {
   display: flex;
   gap: 20px;
+  margin-bottom: 100px;
 
   &__pages {
     display: flex;
