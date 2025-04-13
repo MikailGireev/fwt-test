@@ -1,14 +1,17 @@
 :root {
+  /* Color secondary */
   --color-main-light: #ffffff;
   --color-main-dark: #121212;
+  --color-main-gray: #9c9c9c;
 
+  /* Color primary */
   --color-primary-white: #ffffff;
   --color-primary-light: #dedede;
   --color-primary-dark: #121212;
   --color-primary-gray: #575757;
 
+  /* Color accent */
   --color-gold: #ab8956;
   --color-red: #9b4b4b;
   --color-secondary: #1a1818;
-  --color-gray: #9c9c9c;
 }

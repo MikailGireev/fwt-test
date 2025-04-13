@@ -105,7 +105,7 @@ const visiblePages = computed(() => {
 }
 
 .light {
-  --hover-underline-color: var(--color-gray);
+  --hover-underline-color: var(--color-main-gray);
 
   button {
     color: var(--color-primary-gray);
@@ -113,7 +113,7 @@ const visiblePages = computed(() => {
 
   :deep(svg path) {
     transition: fill 0.3s ease-in-out;
-    fill: var(--color-gray);
+    fill: var(--color-main-gray);
   }
 
   :deep(svg:hover path) {
