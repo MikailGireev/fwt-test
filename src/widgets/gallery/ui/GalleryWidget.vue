@@ -67,6 +67,7 @@ watch(inputValue, () => {
 
 <style scoped lang="scss">
 .gallery {
+  width: 100%;
   margin-top: 44px;
   margin-bottom: 40px;
 

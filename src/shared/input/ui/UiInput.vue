@@ -39,9 +39,19 @@ const emits = defineEmits(['update:modelValue']);
     outline: none;
 
     &.light {
-      background-color: #1a1818;
+      background-color: var(--color-secondary);
       border: none;
       color: var(--color-primary-light);
+
+      &:focus {
+        border: 1px solid var(--color-primary-light);
+      }
+    }
+
+    &.dark {
+      &:focus {
+        border: 1px solid var(--color-primary-gray);
+      }
     }
   }
 

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useStoreThemeSwither } from '@/features/themeSwitcher';
+import { Icon } from '@/shared/icon';
+import { IconNames } from '@/shared/icon/model/iconMaps';
 import { useGalleryStore } from '@/widgets/gallery/model/galleryStore';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
@@ -32,7 +34,9 @@ const visiblePages = computed(() => {
 
 <template>
   <div :class="`pagination ${isLight ? 'light' : 'dark'}`">
-    <button @click="setPage(page - 1)" :disabled="page === 1"><</button>
+    <button @click="setPage(page - 1)" :disabled="page === 1">
+      <Icon class="arrow" :icon="IconNames.LeftArrow" />
+    </button>
     <div class="pagination__pages">
       <button
         v-for="p in visiblePages"
@@ -44,20 +48,39 @@ const visiblePages = computed(() => {
         {{ p }}
       </button>
     </div>
-    <button @click="setPage(page + 1)" :disabled="page === totalPage">></button>
+    <button @click="setPage(page + 1)" :disabled="page === totalPage">
+      <Icon class="arrow" :icon="IconNames.RightArrow" />
+    </button>
   </div>
 </template>
 
 <style scoped lang="scss">
 .pagination {
+  --hover-underline-color: var(--color-primary-gray);
+
   display: flex;
   gap: 20px;
   margin-bottom: 100px;
 
-  &__pages {
+  .pagination__pages {
     display: flex;
     gap: 4px;
     align-items: center;
+
+    button {
+      position: relative;
+      transition: all 0.2s ease-in-out;
+
+      &:not(.active):hover::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        background-color: var(--hover-underline-color);
+      }
+    }
   }
 
   button {
@@ -82,9 +105,21 @@ const visiblePages = computed(() => {
 }
 
 .light {
+  --hover-underline-color: var(--color-gray);
+
   button {
     color: var(--color-primary-gray);
   }
+
+  :deep(svg path) {
+    transition: fill 0.3s ease-in-out;
+    fill: var(--color-gray);
+  }
+
+  :deep(svg:hover path) {
+    fill: var(--hover-underline-color);
+  }
+
   .active {
     background-color: #1212120d;
     color: var(--color-primary-gray);

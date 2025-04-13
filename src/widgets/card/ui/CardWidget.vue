@@ -25,14 +25,26 @@ const { isMobile } = useBreakpoint();
 
 <template>
   <div class="card">
-    <img :src="card.img" :alt="card.title" />
+    <div class="card-image">
+      <img :src="card.img" :alt="card.title" />
+    </div>
     <div :class="`card-title ${isLight ? 'light' : 'dark'}`">
-      <Typography :size="isMobile ? '12px' : '16px'" class="card-title__title" :tag="Tags.P">
-        {{ card.title.toUpperCase() }}
-      </Typography>
-      <Typography :size="isMobile ? '8px' : '12px'" class="card-title__year" :tag="Tags.SPAN">
-        {{ card.year }}
-      </Typography>
+      <div class="card-title__content">
+        <Typography :size="isMobile ? '12px' : '16px'" class="card-title__title" :tag="Tags.P">
+          {{ card.title.toUpperCase() }}
+        </Typography>
+        <Typography :size="isMobile ? '8px' : '12px'" class="card-title__year" :tag="Tags.SPAN">
+          {{ card.year }}
+        </Typography>
+      </div>
+      <div class="card-title__lorem">
+        <Typography :size="isMobile ? '12px' : '16px'" class="card-title__title" :tag="Tags.P">
+          JEAN-HONORE FRAGONARD
+        </Typography>
+        <Typography :size="isMobile ? '8px' : '12px'" class="card-title__year" :tag="Tags.SPAN">
+          LOUVRE MUSEUM
+        </Typography>
+      </div>
     </div>
   </div>
 </template>
@@ -40,9 +52,26 @@ const { isMobile } = useBreakpoint();
 <style scoped lang="scss">
 .card {
   position: relative;
-  img {
-    width: 100%;
-    max-width: 392px;
+
+  &:deep(.typography-p) {
+    font-family: 'Cormorant SC';
+  }
+
+  .card-image {
+    overflow: hidden;
+    border-radius: 4px;
+    transform-style: preserve-3d;
+    background-color: var(--color-main-dark);
+
+    img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+  }
+
+  &:hover .card-image img {
+    transform: scale(1.1) translateZ(0);
   }
 
   &-title {
@@ -55,7 +84,7 @@ const { isMobile } = useBreakpoint();
     padding-left: 20px;
     position: absolute;
     left: 0;
-    bottom: 4px;
+    bottom: 0px;
   }
 
   &-title.dark {
@@ -90,6 +119,33 @@ const { isMobile } = useBreakpoint();
     }
     .card-title__year {
       color: var(--color-red);
+    }
+  }
+
+  &-title__content {
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+    transform: translateY(0);
+  }
+
+  &-title__lorem {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.5s ease-in-out;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+
+  &:hover {
+    .card-title__content {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .card-title__lorem {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 }

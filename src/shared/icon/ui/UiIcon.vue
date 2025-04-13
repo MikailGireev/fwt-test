@@ -29,15 +29,18 @@ span {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  border-radius: 50%;
   transition: background-color 0.3s ease-in-out;
 
   &.icon-light {
-    background-color: #1a1818;
-    border-radius: 50%;
+    background-color: var(--color-secondary);
   }
 
   &.icon-dark {
     background-color: transparent;
+    &:hover {
+      background-color: #f3f3f3;
+    }
   }
 }
 </style>
